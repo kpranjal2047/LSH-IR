@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module IR_assignment_2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>IR_assignment_2</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:f%3A%5Cir%20assignment2%5Cir_assignment_2.py">f:\ir assignment2\ir_assignment_2.py</a></font></td></tr></table>
+    <p><tt>Text-based&nbsp;information&nbsp;retrieval&nbsp;system&nbsp;using&nbsp;Locality&nbsp;Sensitive&nbsp;Hashing</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-building_buckets_and_finding_plagiarised_docs"><strong>building_buckets_and_finding_plagiarised_docs</strong></a>()</dt><dd><tt>Here,&nbsp;rows&nbsp;are&nbsp;clubbed&nbsp;into&nbsp;24&nbsp;bands&nbsp;with&nbsp;each&nbsp;band&nbsp;having&nbsp;4&nbsp;rows.<br>
+The&nbsp;dictionary&nbsp;band_dict&nbsp;stores&nbsp;the&nbsp;documents&nbsp;present&nbsp;in&nbsp;every&nbsp;band.<br>
+&nbsp;<br>
+To&nbsp;hash&nbsp;a&nbsp;document&nbsp;into&nbsp;bands,&nbsp;<br>
+multiply&nbsp;the&nbsp;sign_matrix&nbsp;values&nbsp;of&nbsp;that&nbsp;document&nbsp;with&nbsp;the&nbsp;indexes&nbsp;<br>
+corresponding&nbsp;to&nbsp;a&nbsp;band&nbsp;and&nbsp;then&nbsp;take&nbsp;a&nbsp;summation&nbsp;over&nbsp;those&nbsp;values.<br>
+If&nbsp;the&nbsp;sum&nbsp;is&nbsp;an&nbsp;index&nbsp;of&nbsp;the&nbsp;band_dict&nbsp;,&nbsp;then&nbsp;append&nbsp;the&nbsp;document&nbsp;to&nbsp;that&nbsp;bucket(i.e,&nbsp;sum),<br>
+otherwise&nbsp;make&nbsp;a&nbsp;new&nbsp;bucket&nbsp;and&nbsp;then&nbsp;append&nbsp;that&nbsp;document&nbsp;to&nbsp;that&nbsp;bucket.<br>
+&nbsp;<br>
+Finally,&nbsp;print&nbsp;all&nbsp;the&nbsp;documents&nbsp;present&nbsp;in&nbsp;the&nbsp;same&nbsp;bucket&nbsp;as&nbsp;the&nbsp;input&nbsp;document.<br>
+This&nbsp;will&nbsp;be&nbsp;the&nbsp;final&nbsp;set&nbsp;of&nbsp;plagiarised&nbsp;documents.</tt></dd></dl>
+ <dl><dt><a name="-building_hash_matrix"><strong>building_hash_matrix</strong></a>()</dt><dd><tt>The&nbsp;num_of_hash_func&nbsp;is&nbsp;taken&nbsp;as&nbsp;96&nbsp;and&nbsp;the&nbsp;hash&nbsp;matrix&nbsp;has&nbsp;shingles&nbsp;as&nbsp;rows<br>
+and&nbsp;hash&nbsp;functions&nbsp;as&nbsp;columns.&nbsp;This&nbsp;matrix&nbsp;stores&nbsp;the&nbsp;hash&nbsp;values&nbsp;according&nbsp;to&nbsp;<br>
+the&nbsp;hash&nbsp;function&nbsp;declared&nbsp;below.</tt></dd></dl>
+ <dl><dt><a name="-building_shingle_doc_dictionary"><strong>building_shingle_doc_dictionary</strong></a>()</dt><dd><tt>main_dict&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;which&nbsp;stores&nbsp;shingles&nbsp;of&nbsp;size&nbsp;8&nbsp;as&nbsp;keys&nbsp;and&nbsp;the&nbsp;<br>
+docNames&nbsp;as&nbsp;a&nbsp;list&nbsp;of&nbsp;values&nbsp;corresponding&nbsp;to&nbsp;that&nbsp;key</tt></dd></dl>
+ <dl><dt><a name="-building_signature_matrix"><strong>building_signature_matrix</strong></a>()</dt><dd><tt>sign_matrix&nbsp;has&nbsp;rows&nbsp;as&nbsp;number&nbsp;of&nbsp;hash&nbsp;functions&nbsp;and&nbsp;columns&nbsp;as&nbsp;the&nbsp;docs.<br>
+This&nbsp;matrix&nbsp;is&nbsp;initialised&nbsp;with&nbsp;infinity&nbsp;values.&nbsp;Now&nbsp;the&nbsp;npmatrix&nbsp;is&nbsp;mapped<br>
+to&nbsp;the&nbsp;sign_matrix.&nbsp;So,&nbsp;if&nbsp;the&nbsp;npmatrix&nbsp;contains&nbsp;1&nbsp;,&nbsp;then&nbsp;the&nbsp;sign_matrix&nbsp;will<br>
+have&nbsp;the&nbsp;corresponding&nbsp;hash&nbsp;values&nbsp;for&nbsp;a&nbsp;particular&nbsp;hash&nbsp;function<br>
+Similarly,&nbsp;different&nbsp;rows&nbsp;of&nbsp;the&nbsp;sign_matrix&nbsp;will&nbsp;be&nbsp;filled&nbsp;with&nbsp;different<br>
+hash&nbsp;functions&nbsp;values</tt></dd></dl>
+ <dl><dt><a name="-making_shingle_doc_matrix"><strong>making_shingle_doc_matrix</strong></a>()</dt><dd><tt>npmatrix&nbsp;is&nbsp;the&nbsp;original&nbsp;matrix&nbsp;with&nbsp;rows&nbsp;as&nbsp;shingles&nbsp;and&nbsp;columns&nbsp;as&nbsp;docIds<br>
+storing&nbsp;0&nbsp;if&nbsp;a&nbsp;shingle&nbsp;present&nbsp;in&nbsp;document&nbsp;else&nbsp;1</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__warningregistry__</strong> = {'version': 4}<br>
+<strong>answer</strong> = {16, 21, 34, 47, 51, 56, ...}<br>
+<strong>band</strong> = 23<br>
+<strong>band_dict</strong> = {}<br>
+<strong>bands</strong> = 24<br>
+<strong>bucket</strong> = 443<br>
+<strong>dataset</strong> = "in mathematics and computer science, dynamic pro... subproblems we know that we'll need in advance.<font color="#c040c0">\n</font>"<br>
+<strong>docid</strong> = 100<br>
+<strong>file</strong> = &lt;_io.TextIOWrapper name='corpus/100.txt' mode='r' encoding='utf8'&gt;<br>
+<strong>hash</strong> = 95<br>
+<strong>hash_matrix</strong> = array([[    9,    15,    21, ...,   567,   573, ...[48000, 43851, 39702, ..., 38799, 34650, 30501]])<br>
+<strong>i</strong> = 96<br>
+<strong>j</strong> = 100<br>
+<strong>length_of_doc</strong> = 3141<br>
+<strong>main_dict</strong> = {'<font color="#c040c0">\t</font> <font color="#c040c0">\n\n</font>let ': [94], '<font color="#c040c0">\t</font>   in r': [95], '<font color="#c040c0">\t</font>(1) <font color="#c040c0">\n</font>wh': [94], '<font color="#c040c0">\t</font>(2) <font color="#c040c0">\n</font>th': [94], '<font color="#c040c0">\t</font>(3) <font color="#c040c0">\n</font>no': [94], '<font color="#c040c0">\t</font>(4) <font color="#c040c0">\n</font>so': [94], '<font color="#c040c0">\t</font>(5) <font color="#c040c0">\n</font> <font color="#c040c0">\t</font>': [94], '<font color="#c040c0">\t</font>(6) <font color="#c040c0">\n</font>bu': [94], '<font color="#c040c0">\t</font>(7) <font color="#c040c0">\n</font>so': [94], '<font color="#c040c0">\t</font>(enhanc': [93], ...}<br>
+<strong>main_shingle_list</strong> = ['inherita', 'nheritan', 'heritanc', 'eritance', 'ritance ', 'itance i', 'tance is', 'ance is ', 'nce is a', 'ce is a ', 'e is a b', ' is a ba', 'is a bas', 's a basi', ' a basic', 'a basic ', ' basic c', 'basic co', 'asic con', 'sic conc', ...]<br>
+<strong>npmatrix</strong> = array([[0, 1, 0, ..., 0, 0, 0],
+       [0, 1, 0,..., ..., 0, 0, 1],
+       [0, 0, 0, ..., 0, 0, 1]])<br>
+<strong>num_of_hash_func</strong> = 96<br>
+<strong>prod</strong> = 1<br>
+<strong>query_docid</strong> = 96<br>
+<strong>row</strong> = 95<br>
+<strong>rows</strong> = 4<br>
+<strong>s</strong> = 150198<br>
+<strong>shingle</strong> = 'advance.'<br>
+<strong>shingle_list</strong> = ['in mathe', 'n mathem', ' mathema', 'mathemat', 'athemati', 'thematic', 'hematics', 'ematics ', 'matics a', 'atics an', 'tics and', 'ics and ', 'cs and c', 's and co', ' and com', 'and comp', 'nd compu', 'd comput', ' compute', 'computer', ...]<br>
+<strong>sign_matrix</strong> = array([[100000,      9,   1206, ...,   1178,    ...0,     13,     21, ...,    107,      9,     31]])<br>
+<strong>sum</strong> = 546</td></tr></table>
+</body></html>

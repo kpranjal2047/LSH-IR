@@ -1,2 +1,1 @@
-# LSH-IR
-Information Retrival System using LSH
+# Text-based-information-retrieval-system-using-Locality-Sensitive-Hashing
