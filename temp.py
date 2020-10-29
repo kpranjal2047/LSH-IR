@@ -1,6 +1,10 @@
-
 import numpy as np
 import pandas as pd
+
+def create_shingles():
+    file = open("DNA/human_data.txt", 'r', encoding="utf8")
+    df = pd.read_csv('DNA/human_data.txt')
+    print(pf)
 
 main_dict = {}
 s = 0
@@ -63,10 +67,6 @@ answer = set()
 bands = 24
 rows = 4
 for band in range(0, bands):
-    band_dict = {}
-    # for i in range(0,100):
-    # band_dict[i]=[]
-    for docid in range(1, 101):
         sum = 0
         prod = 1
         for row in range(band*rows, (band*rows)+rows):
