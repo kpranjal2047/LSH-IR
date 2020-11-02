@@ -15,8 +15,7 @@ df = pd.read_csv('data.csv', sep=',')
 
 shingle_dict = {}
 unique_shingles = []
-shingle_length = 4
-
+shingle_length = int(input("Enter length of shingles to be generated: "))
 
 def create_shingles():
     print('[INFO] Creating Shingles Matrix ...')
@@ -69,9 +68,9 @@ def get_min_hash_functions():
 def find_signature_matrix(shingle_matrix):
 
     print('[CHECK] Checking for Signature Matrix')
-    if os.path.exists('Saved/signature_matrix.npy'):
+    if os.path.exists('Saved/signature_matrix_{0}.npy'.format(shingle_length)):
         print('[SUCCESS] Signature Matrix Found!')
-        signature_matrix = np.load('Saved/signature_matrix.npy')
+        signature_matrix = np.load('Saved/signature_matrix_{0}.npy'.format(shingle_length))
         return signature_matrix
 
     print('[INFO] Creating Signature Matrix')
@@ -103,7 +102,7 @@ def find_signature_matrix(shingle_matrix):
     if not os.path.exists('Saved'):
         os.mkdir('Saved')
 
-    np.save('Saved/signature_matrix.npy', signature_matrix)
+    np.save('Saved/signature_matrix_{0}.npy'.format(shingle_length), signature_matrix)
 
     return signature_matrix
 
