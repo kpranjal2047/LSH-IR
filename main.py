@@ -112,10 +112,10 @@ def find_signature_matrix(shingle_matrix):
     return signature_matrix
 
 def create_buckets(signature_matrix):
-    query_docid = 216  # Give query here
-    print('[CHECK] Checking for similar documents')
+    query_docid = int(input("Enter DocId to be checked for similarity: "))
     bands = 25
     rows_per_band = 4
+    print('[CHECK] Checking for similar documents')
     bucket = 0
     answer = {}
     for band in range(0, bands):
