@@ -71,6 +71,11 @@ def find_signature_matrix(shingle_matrix):
     if os.path.exists('Saved/signature_matrix_{0}.npy'.format(shingle_length)):
         print('[SUCCESS] Signature Matrix Found!')
         signature_matrix = np.load('Saved/signature_matrix_{0}.npy'.format(shingle_length))
+        #print("Shingle Matrix\n",shingle_matrix)
+        #print(shingle_matrix.shape)
+        #print("Signature Matrix\n",signature_matrix)
+        #print(signature_matrix.shape)
+
         return signature_matrix
 
     print('[INFO] Creating Signature Matrix')
@@ -106,9 +111,39 @@ def find_signature_matrix(shingle_matrix):
 
     return signature_matrix
 
+def create_buckets(signature_matrix):
+    query_docid = 216  # Give query here
+    print('[CHECK] Checking for similar documents')
+    bands = 25
+    rows_per_band = 4
+    bucket = 0
+    answer = {}
+    for band in range(0, bands):
+        band_dict = {}
+        for docid in range(1, 500):
+            sum = 0
+            for row in range(band * rows_per_band, (band * rows_per_band) + rows_per_band):
+                sum += ((row+1-(band * rows_per_band)) * signature_matrix[row][docid])
 
+            if sum not in band_dict:
+                band_dict[sum] = []
+            band_dict[sum].append(docid)
+            if(docid == query_docid):
+                bucket = sum
+        for i in band_dict[bucket]:
+            if i not in answer:
+                answer[i] = calc_jaccard_sim(query_docid, i,signature_matrix)
+        band_dict.clear()
+    print('[SUCCESS] Printing similar documents (most relevant first)')
+    for i in sorted(answer, key = answer.get, reverse = True):
+        print(i,answer[i])
 
+def calc_jaccard_sim(query_docid, docid,relevant_matrix):
+    a = relevant_matrix[:,query_docid]
+    b = relevant_matrix[:,docid]
+    return np.double(np.bitwise_and(a, b).sum()) / np.double(np.bitwise_or(a, b).sum())
 
 
 shingle_matrix = create_shingles()
 signature_matrix = find_signature_matrix(shingle_matrix)
+create_buckets(signature_matrix)
