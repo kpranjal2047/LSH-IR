@@ -1,0 +1,11 @@
+There are many attributes which infulance the ranking of a page in google, The main too are the content, key words, and links. The content of a webpage generaly gives a good idea about what the page is about, however, there are some flaws in this, for example, for along time ibm web page didnt contain the word computer dispite it being strongly associated with them. To solve this problem, web pages can assign itself key words, which contribute to its ranking in searches.
+
+The second method is the use of links. the more sights which links to your web page and the higher the rank of those sights, the higher the rank of your site will be. This method is used as links are seen as an adoursment of a sight.
+
+With both these methods of ranking web pages, there are issues. key words can be compromised by sparming, google solves this problem by penolizing such activity. Useing links to rank a page also has its problems, for example, link farms which have recursive links, for the sole perpos of raising there ranking, google takels this by useing a dampaning algorthem. 
+
+The PageRank is derived from a theoretical probability value on a logarithmic scale like the Richter Scale. The PageRank of a particular page is roughly based upon the quantity of inbound links as well as the PageRank of the pages providing the links. It is known that other factors, e.g. relevance of search words on the page and actual visits to the page reported by the Google toolbar also influence the PageRank. In order to prevent manipulation, spoofing and Spamdexing, Google provides no specific details about how other factors influence PageRank.
+
+Numerous academic papers concerning PageRank have been published since Page and Brin's original paper. In practice, the PageRank concept has proven to be vulnerable to manipulation, and extensive research has been devoted to identifying falsely inflated PageRank and ways to ignore links from documents with falsely inflated PageRank.
+
+Other link-based ranking algorithms for Web pages include the HITS algorithm invented by Jon Kleinberg (used by Teoma and now Ask.com), the IBM CLEVER project, and the TrustRank algorithm.
