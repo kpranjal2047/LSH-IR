@@ -5,15 +5,10 @@ import numpy as np
 import re
 import random
 import os
-
-# Import data
-df = pd.read_csv('data.csv', sep=',')
-# print(df)
+import time
 
 
 # Creates Boolean Shingle Matrix with number of rows = unique_shingles and columns = number of documents
-
-shingle_dict = {}
 unique_shingles = []
 
 shingle_length = int(input("Enter length of shingles to be generated: "))
@@ -23,13 +18,18 @@ def create_shingles():
     Creates Shingle Matrix of dimension (No of unique shingles * No of Docs) 
     Returns: Shingle Matrix 
     '''
+    start_time = time.time()
+    df = pd.read_csv('data.csv', sep=',')
+    shingle_dict = {}
     print('[INFO] Creating Shingles Matrix ...')
     desc = df['description']
     for doc_id, desc in enumerate(desc):
         # store all shingles of length k
         desc = str(desc)
+        desc = desc.strip()
         desc = re.sub(r"<.*>", "", desc)
         desc = re.sub(r"[^a-z0-9\s]", "", desc.lower())
+        desc = re.sub(r"\s+", " ", desc)
         # print(desc)
         shingle_list = [desc[x:x + shingle_length] for x in range(0, len(desc) - (shingle_length-1))]
 
@@ -54,7 +54,8 @@ def create_shingles():
     # print(shingle_matrix)
     # print(shingle_dict)
     # print(len(unique_shingles))
-
+    time_end = time.time()
+    print(f'Time Taken : {time_end - start_time} seconds')
     return shingle_matrix
 
 
@@ -80,6 +81,7 @@ def find_signature_matrix(shingle_matrix):
     Input: Shingle Matrix  
     Returns: Signature Matrix
     '''
+    start_time = time.time()
     print('[CHECK] Checking for Signature Matrix')
     if os.path.exists('Saved/signature_matrix_{}.npy'.format(shingle_length)):
         print('[SUCCESS] Signature Matrix Found!')
@@ -120,6 +122,9 @@ def find_signature_matrix(shingle_matrix):
         os.mkdir('Saved')
     np.save('Saved/signature_matrix_{}.npy'.format(shingle_length), signature_matrix)
 
+    time_end = time.time()
+    print(f'Time Taken : {time_end - start_time} seconds')
+
     return signature_matrix
 
 def create_buckets(signature_matrix):
@@ -134,6 +139,8 @@ def create_buckets(signature_matrix):
     bands = 25
     rows_per_band = 4
     threshold = float(input("Enter threshold of Jaccard similarity: "))
+
+    start_time = time.time()
     print('[CHECK] Checking for similar documents')
     bucket = 0
     answer = {}
@@ -157,6 +164,9 @@ def create_buckets(signature_matrix):
     for i in sorted(answer, key = answer.get, reverse = True):
         if (answer[i]>threshold):
             print(i,answer[i])
+
+    time_end = time.time()
+    print(f'Time Taken : {time_end - start_time} seconds')
 
 def calc_jaccard_sim(query_docid, docid,relevant_matrix):
     '''
