@@ -18,6 +18,10 @@ unique_shingles = []
 shingle_length = int(input("Enter length of shingles to be generated: "))
 
 def create_shingles():
+    '''
+    Creates Shingle Matrix of dimension (No of unique shingles * No of Docs) 
+    Returns: Shingle Matrix 
+    '''
     print('[INFO] Creating Shingles Matrix ...')
     desc = df['description']
     for doc_id, desc in enumerate(desc):
@@ -55,6 +59,10 @@ def create_shingles():
 
 # num of hash functions is 100
 def get_min_hash_functions():
+    '''
+    Generates 100 random hash functions of size ax + b  
+    Returns: List of hash functions
+    '''
     result = []
     for x in range(100):
         vector = []
@@ -66,11 +74,15 @@ def get_min_hash_functions():
 
 
 def find_signature_matrix(shingle_matrix):
-
+    '''
+    Generates signature matrix for the given shingle matrix of the same dimension
+    Input: Shingle Matrix  
+    Returns: Signature Matrix
+    '''
     print('[CHECK] Checking for Signature Matrix')
-    if os.path.exists('Saved/signature_matrix_{0}.npy'.format(shingle_length)):
+    if os.path.exists('Saved/signature_matrix_{}.npy'.format(shingle_length)):
         print('[SUCCESS] Signature Matrix Found!')
-        signature_matrix = np.load('Saved/signature_matrix_{0}.npy'.format(shingle_length))
+        signature_matrix = np.load('Saved/signature_matrix_{}.npy'.format(shingle_length))
         #print("Shingle Matrix\n",shingle_matrix)
         #print(shingle_matrix.shape)
         #print("Signature Matrix\n",signature_matrix)
@@ -107,11 +119,18 @@ def find_signature_matrix(shingle_matrix):
     if not os.path.exists('Saved'):
         os.mkdir('Saved')
 
-    np.save('Saved/signature_matrix_{0}.npy'.format(shingle_length), signature_matrix)
+    np.save('Saved/signature_matrix_{}.npy'.format(shingle_length), signature_matrix)
 
     return signature_matrix
 
 def create_buckets(signature_matrix):
+    '''
+    Finds documents similar to input Query DocId and displays the results in rank order fashion.
+    Creates a dictionary of buckets using the signature matrix and hashes documents with
+    similar signature in the same bucket
+    Input: Signature Matrix
+    Prints: List of similar documents in descending order of similarity
+    '''
     query_docid = int(input("Enter DocId to be checked for similarity: "))
     bands = 25
     rows_per_band = 4
@@ -141,6 +160,11 @@ def create_buckets(signature_matrix):
             print(i,answer[i])
 
 def calc_jaccard_sim(query_docid, docid,relevant_matrix):
+    '''
+    Calculates Jaccard Similarity between two documents
+    Input: Documents to be compared and signature/shingle matrix
+    Returns: Jaccard Similarity 
+    '''
     a = relevant_matrix[:,query_docid]
     b = relevant_matrix[:,docid]
     return np.double(np.bitwise_and(a, b).sum()) / np.double(np.bitwise_or(a, b).sum())
