@@ -115,12 +115,13 @@ def create_buckets(signature_matrix):
     query_docid = int(input("Enter DocId to be checked for similarity: "))
     bands = 25
     rows_per_band = 4
+    threshold = float(input("Enter threshold of Jaccard similarity: "))
     print('[CHECK] Checking for similar documents')
     bucket = 0
     answer = {}
     for band in range(0, bands):
         band_dict = {}
-        for docid in range(1, 500):
+        for docid in range(0, 500):
             sum = 0
             for row in range(band * rows_per_band, (band * rows_per_band) + rows_per_band):
                 sum += ((row+1-(band * rows_per_band)) * signature_matrix[row][docid])
@@ -136,7 +137,8 @@ def create_buckets(signature_matrix):
         band_dict.clear()
     print('[SUCCESS] Printing similar documents (most relevant first)')
     for i in sorted(answer, key = answer.get, reverse = True):
-        print(i,answer[i])
+        if (answer[i]>threshold):
+            print(i,answer[i])
 
 def calc_jaccard_sim(query_docid, docid,relevant_matrix):
     a = relevant_matrix[:,query_docid]
