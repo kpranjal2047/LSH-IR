@@ -1,3 +1,5 @@
+Locality Sensitive Hashing Project
+
 ## Using the application
 
 The entire functionality of the application has been integrated into one file, main.py, for ease of use.
@@ -7,7 +9,7 @@ Run the file main.py, and enter the following parameters:
 2. The DocID to be checked
 3. The threshold for Jaccard similarity
 
-The relevant results will be printed in stdout, in most relevant first order.
+The relevant results will be printed in stdout, in most relevant first order. The Jaccard Similarity is also printed along with the retrieved documents for validation purpose.
 
 ## Built and Tested on Machine with following specs:
 
