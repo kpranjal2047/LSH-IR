@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module main</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>main</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:g%3A%5Cgithub%20desktop%20projects%5Clsh-ir%5Cmain.py">g:\github desktop projects\lsh-ir\main.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="pandas.html">pandas</a><br>
+<a href="random.html">random</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+<a href="zlib.html">zlib</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-calc_jaccard_sim"><strong>calc_jaccard_sim</strong></a>(query_docid, docid, relevant_matrix)</dt><dd><tt>Calculates&nbsp;Jaccard&nbsp;Similarity&nbsp;between&nbsp;two&nbsp;documents<br>
+Input:&nbsp;Documents&nbsp;to&nbsp;be&nbsp;compared&nbsp;and&nbsp;signature/shingle&nbsp;matrix<br>
+Returns:&nbsp;Jaccard&nbsp;Similarity</tt></dd></dl>
+ <dl><dt><a name="-create_buckets"><strong>create_buckets</strong></a>(signature_matrix)</dt><dd><tt>Finds&nbsp;documents&nbsp;similar&nbsp;to&nbsp;input&nbsp;Query&nbsp;DocId&nbsp;and&nbsp;displays&nbsp;the&nbsp;results&nbsp;in&nbsp;rank&nbsp;order&nbsp;fashion.<br>
+Creates&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;buckets&nbsp;using&nbsp;the&nbsp;signature&nbsp;matrix&nbsp;and&nbsp;hashes&nbsp;documents&nbsp;with<br>
+similar&nbsp;signature&nbsp;in&nbsp;the&nbsp;same&nbsp;bucket<br>
+Input:&nbsp;Signature&nbsp;Matrix<br>
+Prints:&nbsp;List&nbsp;of&nbsp;similar&nbsp;documents&nbsp;in&nbsp;descending&nbsp;order&nbsp;of&nbsp;similarity</tt></dd></dl>
+ <dl><dt><a name="-create_shingles"><strong>create_shingles</strong></a>()</dt><dd><tt>Creates&nbsp;Shingle&nbsp;Matrix&nbsp;of&nbsp;dimension&nbsp;(No&nbsp;of&nbsp;unique&nbsp;shingles&nbsp;*&nbsp;No&nbsp;of&nbsp;Docs)&nbsp;<br>
+Returns:&nbsp;Shingle&nbsp;Matrix</tt></dd></dl>
+ <dl><dt><a name="-find_signature_matrix"><strong>find_signature_matrix</strong></a>(shingle_matrix)</dt><dd><tt>Generates&nbsp;signature&nbsp;matrix&nbsp;for&nbsp;the&nbsp;given&nbsp;shingle&nbsp;matrix&nbsp;of&nbsp;the&nbsp;same&nbsp;dimension<br>
+Input:&nbsp;Shingle&nbsp;Matrix&nbsp;&nbsp;<br>
+Returns:&nbsp;Signature&nbsp;Matrix</tt></dd></dl>
+ <dl><dt><a name="-get_min_hash_functions"><strong>get_min_hash_functions</strong></a>()</dt><dd><tt>Generates&nbsp;100&nbsp;random&nbsp;hash&nbsp;functions&nbsp;of&nbsp;size&nbsp;ax&nbsp;+&nbsp;b&nbsp;&nbsp;<br>
+Returns:&nbsp;List&nbsp;of&nbsp;hash&nbsp;functions</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>df</strong> =       id                                        ...o simplify? Our All-We...
+
+[500 rows x 2 columns]<br>
+<strong>shingle_dict</strong> = {'   a': [376], '   d': [410], '   k': [412], '   t': [93, 363], '  10': [107, 108, 389], '  a ': [6, 28, 29, 98, 139, 159, 168, 188, 197, 210, 216, 226, 296, 310, 311, 319, 335, 345, 352, 371, ...], '  ab': [98, 465], '  ad': [71, 218, 290, 333], '  af': [193, 234, 277, 364], '  ak': [446], ...}<br>
+<strong>shingle_length</strong> = 4<br>
+<strong>shingle_matrix</strong> = array([[1, 1, 1, ..., 0, 1, 0],
+       [1, 1, 1,..., ..., 0, 0, 1],
+       [0, 0, 0, ..., 0, 0, 1]])<br>
+<strong>signature_matrix</strong> = array([[ 23,  16,  16, ...,  16,  23,  48],
+    ...45],
+       [ 27,  37,  57, ...,  16,  37,  17]])<br>
+<strong>unique_shingles</strong> = ['acti', 'ctiv', 'tive', 'ive ', 've c', 'e cl', ' cla', 'clas', 'lass', 'assi', 'ssic', 'sic ', 'ic b', 'c bo', ' box', 'boxe', 'oxer', 'xers', 'ers ', 'rs  ', ...]</td></tr></table>
+</body></html>

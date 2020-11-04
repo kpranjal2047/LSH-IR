@@ -131,7 +131,7 @@ def create_buckets(signature_matrix):
     Input: Signature Matrix
     Prints: List of similar documents in descending order of similarity
     '''
-    query_docid = int(input("Enter DocId to be checked for similarity: "))
+    query_docid = int(input("Enter DocId to be checked for similarity (0-499): "))
     bands = 25
     rows_per_band = 4
     threshold = float(input("Enter threshold of Jaccard similarity: "))
