@@ -1,3 +1,6 @@
+## About this application
+This application finds similar documents to a query doc present in the corpus. This application uses Locality Sensitive Hashing technique to find the similar documents.
+
 ## Using the application
 
 The entire functionality of the application has been integrated into one file, main.py, for ease of use.
